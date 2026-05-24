@@ -1,0 +1,29 @@
+ACME PLATFORM — PRODUCT KNOWLEDGE BASE
+
+GETTING STARTED:
+Q: How do I set up my account?
+A: After signing up, go to Settings > Profile to complete your profile. Then connect your first integration under Integrations > Add New. Setup takes approximately 10 minutes.
+
+Q: What integrations do you support?
+A: We support Salesforce, HubSpot, Slack, Google Workspace, Microsoft 365, Zapier, and 50+ other tools via our native integration library. API access is available on Professional and Enterprise plans.
+
+Q: How long does onboarding typically take?
+A: Most customers complete core setup in 1-2 days. Full onboarding including team training typically takes 1-2 weeks. Your Customer Success Manager will guide you through each step.
+
+BILLING AND PLANS:
+Q: What is included in the Starter plan?
+A: Starter includes: up to 5 users, 10GB storage, core features, email support (2 business day response), and access to our help centre. Annual billing gives a 20% discount.
+
+Q: Can I upgrade or downgrade my plan?
+A: Yes. Go to Settings > Billing > Change Plan. Upgrades take effect immediately. Downgrades take effect at the end of your billing period. No cancellation fees.
+
+TROUBLESHOOTING:
+Q: Why can't I see my data after connecting an integration?
+A: Initial data sync can take 15-30 minutes. If data still doesn't appear after 1 hour, go to Integrations > [Your Integration] > Re-sync. Contact support if the issue persists.
+
+Q: How do I add team members?
+A: Go to Settings > Team > Invite Members. Enter their email address and select their role (Admin, Editor, or Viewer). They will receive an invitation email within 5 minutes.
+
+SECURITY:
+Q: Is our data encrypted?
+A: Yes. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We are SOC 2 Type II certified and GDPR compliant. Enterprise customers can request our security documentation.

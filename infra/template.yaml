@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Intelligent Customer Onboarding Agent
+
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 1024
+
+Resources:
+  OnboardingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      ImageUri: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/onboarding-agent:latest"
+      Environment:
+        Variables:
+          OPENAI_API_KEY:          !Ref OpenAIKey
+          PINECONE_API_KEY:        !Ref PineconeKey
+          TWILIO_ACCOUNT_SID:      !Ref TwilioSid
+          TWILIO_AUTH_TOKEN:       !Ref TwilioToken
+          DYNAMODB_TABLE:          !Ref OnboardingTable
+          LANGCHAIN_TRACING_V2:    "true"
+          LANGCHAIN_API_KEY:       !Ref LangSmithKey
+          LANGCHAIN_PROJECT:       project-30-onboarding-agent
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /onboard
+            Method: post
+        HealthEvent:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: get
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref OnboardingTable
+
+  OnboardingTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: customer-onboarding
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: customer_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: customer_id
+          KeyType: HASH
+
+Parameters:
+  OpenAIKey:   {Type: String, NoEcho: true}
+  PineconeKey: {Type: String, NoEcho: true}
+  TwilioSid:   {Type: String, NoEcho: true}
+  TwilioToken: {Type: String, NoEcho: true}
+  LangSmithKey:{Type: String, NoEcho: true}
